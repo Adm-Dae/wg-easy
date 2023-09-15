@@ -19,8 +19,8 @@ const {
 } = require('../config');
 
 const options = {
-    key: fs.readFileSync('privkey.pem'),
-    cert: fs.readFileSync('cert.pem')
+    key: fs.readFileSync('/root/cert/privkey.pem'),
+    cert: fs.readFileSync('/root/cert/cert.pem')
 };
 
 module.exports = class Server {
@@ -142,7 +142,7 @@ module.exports = class Server {
         return WireGuard.updateClientAddress({ clientId, address });
       }))
 
-      https.createServer(options).listen(PORT, () => {
+      https.createServer(options, this.app).listen(PORT, () => {
         debug(`Listening on http://0.0.0.0:${PORT}`);
       });
   }
