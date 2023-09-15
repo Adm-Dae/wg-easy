@@ -1,4 +1,5 @@
 'use strict';
+import https from "https";
 
 const path = require('path');
 
@@ -15,6 +16,11 @@ const {
   RELEASE,
   PASSWORD,
 } = require('../config');
+
+const options = {
+    key: fs.readFileSync('privkey.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
 
 module.exports = class Server {
 
@@ -135,7 +141,7 @@ module.exports = class Server {
         return WireGuard.updateClientAddress({ clientId, address });
       }))
 
-      .listen(PORT, () => {
+      https.createServer(options).listen(PORT, () => {
         debug(`Listening on http://0.0.0.0:${PORT}`);
       });
   }
