@@ -1,5 +1,6 @@
 'use strict';
-import https from "https";
+const https = require('https');
+const fs = require('fs');
 
 const path = require('path');
 
