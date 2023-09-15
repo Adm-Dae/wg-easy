@@ -22,6 +22,10 @@ services:
     container_name: wg-easy
     volumes:
       - .:/etc/wireguard
+      # private and public keys should be named privkey.pem & cert.pem
+      # place them in /root/docker-certs
+      # chmod them to 644
+      - /root/docker-certs:/root/cert
     ports:
       - "51820:51820/udp"
       - "51821:51821/tcp"
