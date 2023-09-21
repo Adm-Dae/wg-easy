@@ -20,7 +20,7 @@ const {
 
 const options = {
     key: fs.readFileSync('/root/cert/privkey.pem'),
-    cert: fs.readFileSync('/root/cert/cert.pem')
+    cert: fs.readFileSync('/root/cert/fullchain.pem')
 };
 
 module.exports = class Server {
